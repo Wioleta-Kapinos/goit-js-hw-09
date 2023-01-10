@@ -3,6 +3,7 @@ let delayInput = document.querySelector('[name="delay"]');
 let stepInput = document.querySelector('[name="step"]');
 const amountInput = document.querySelector('[name="amount"]');
 const formPromise = document.querySelector(".form");
+const inputNumber = document.querySelectorAll("input");
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -21,6 +22,9 @@ function callTheFunction(event) {
   let value = amountInput.value;
   let delay = parseInt(delayInput.value);
   let step = parseInt(stepInput.value);
+  if(value < 0 || delay < 0 || step < 0) {
+    return alert("Wypełnij pola wartością nieujemną!");
+  } 
   for (let i = 1; i <= value; i++) {
     position = i;
     createPromise(position, delay)

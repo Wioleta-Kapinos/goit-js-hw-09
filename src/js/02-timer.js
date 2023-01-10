@@ -2,6 +2,7 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from "notiflix";
 const btnStart = document.querySelector('[data-start');
+btnStart.disabled = true;
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -9,7 +10,7 @@ const options = {
     minuteIncrement: 1,
     onClose: function(selectedDates) {
       if(selectedDates[0] <= fp.now) {
-        Notiflix.Notify.warning("Please choose a date in the future");
+        Notiflix.Notify.failure("Please choose a date in the future");
         btnStart.disabled = true;
       } else {
         btnStart.disabled = false;
@@ -46,6 +47,8 @@ return String(value).padStart(2, "0");
 }
 let timerId;
  function countTimer() {
+  btnStart.disabled = true;
+  myInput.disabled = true;
   timerId = setInterval(() => {
     const today = new Date().getTime();
     const selectDate = new Date(fp.selectedDates[0]).getTime();
