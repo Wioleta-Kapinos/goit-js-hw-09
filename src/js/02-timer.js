@@ -48,7 +48,6 @@ return String(value).padStart(2, "0");
 let timerId;
  function countTimer() {
   btnStart.disabled = true;
-  myInput.disabled = true;
   timerId = setInterval(() => {
     const today = new Date().getTime();
     const selectDate = new Date(fp.selectedDates[0]).getTime();
